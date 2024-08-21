@@ -1,0 +1,14 @@
+$s: 425px; 
+$m: 768px; 
+
+@mixin s {
+  @media screen and (max-width: ($sm)) {
+    @content;
+  }
+}
+
+@mixin m {
+  @media screen and (max-width: ($s)) {
+    @content;
+  }
+}
