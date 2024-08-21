@@ -26,10 +26,20 @@ const initialState: WeatherState = {
 export const fetchWeather = createAsyncThunk(
   "weather/fetchWeather",
   async (city: string) => {
-    const response = await axios.get(
+    const res = await axios.get(
       `${BASE_URL}/weather?q=${city}&appid=${API_KEY}`,
     );
-    return response.data;
+    return res.data;
+  },
+);
+
+export const fetchHourlyWeather = createAsyncThunk(
+  "weather/fetchHourlyWeather",
+  async (city: string) => {
+    const res = await axios.get(
+      `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}`,
+    );
+    return res.data;
   },
 );
 
@@ -60,6 +70,10 @@ const weatherSlice = createSlice({
       })
       .addCase(fetchWeather.rejected, (state) => {
         state.status = "failed";
+      })
+      .addCase(fetchHourlyWeather.fulfilled, (state, action) => {
+        state.weatherData[action.payload.city.name].hourlyForecast =
+          action.payload.list;
       });
   },
 });

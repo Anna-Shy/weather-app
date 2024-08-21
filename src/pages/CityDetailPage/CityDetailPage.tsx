@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
+import { fetchWeather, fetchHourlyWeather } from "../../redux/weatherSlice";
+
+import { TemperatureChart } from "../../components/TemperatureChart/TemperatureChart";
 
 import "./cityDetailPage.scss";
 
 export const CityDetailPage: React.FC = () => {
   const { city } = useParams<{ city: string }>();
+  const dispatch: AppDispatch = useDispatch();
   const weather = city
     ? useSelector((state: RootState) => state.weather.weatherData[city])
     : undefined;
+
+  useEffect(() => {
+    if (city) {
+      dispatch(fetchWeather(city));
+      dispatch(fetchHourlyWeather(city));
+    }
+  }, [city, dispatch]);
 
   const formatDate = (timestamp: number) => {
     const date = new Date(timestamp * 1000);
@@ -34,7 +45,7 @@ export const CityDetailPage: React.FC = () => {
         {weather ? (
           <>
             <p className="CityDetailPage__main-text">
-              Temperature: {weather.main.temp}°C
+              Temperature: {weather.main.temp}°F
             </p>
             <p className="CityDetailPage__main-text">
               Humidity: {weather.main.humidity}%
@@ -48,6 +59,9 @@ export const CityDetailPage: React.FC = () => {
             <p className="CityDetailPage__main-text">
               Last Updated: {formatDate(weather.dt)}
             </p>
+            {weather.hourlyForecast && (
+              <TemperatureChart hourlyData={weather.hourlyForecast || []} />
+            )}
           </>
         ) : (
           <p>Loading...</p>
