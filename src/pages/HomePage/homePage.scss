@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
 
 .HomePage {
   &__header {
@@ -30,5 +31,42 @@
     min-height: 100vh;
     padding: 20px;
     background-color: $white-main-bg;
+  }
+
+  @include m {
+    &__header {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 20px;
+
+      &-title {
+        font-size: $font32;
+        .icon {
+          font-size: $font24;
+        }
+      }
+    }
+
+    &__main {
+      padding: 20px;
+    }
+  }
+
+  @include s {
+    &__header {
+      flex-direction: column;
+      padding: 15px;
+
+      &-title {
+        font-size: $font28;
+        .icon {
+          font-size: $font22;
+        }
+      }
+    }
+
+    &__main {
+      padding: 15px;
+    }
   }
 }

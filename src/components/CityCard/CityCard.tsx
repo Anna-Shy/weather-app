@@ -35,7 +35,7 @@ export const CityCard: React.FC<CityCardProps> = ({ city, weather }) => {
     <div className="CityCard" onClick={handleCardClick}>
       <h3 className="CityCard__title">{city}</h3>
 
-      <p className="CityCard__text">{weather?.main?.temp}°C</p>
+      <p className="CityCard__text">{weather?.main?.temp}°F</p>
 
       <button
         onClick={handleUpdate}
