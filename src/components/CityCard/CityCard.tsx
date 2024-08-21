@@ -6,6 +6,8 @@ import { AppDispatch } from "../../redux/store";
 
 import { fetchWeather, removeCity } from "../../redux/weatherSlice";
 
+import "./cityCard.scss";
+
 interface CityCardProps {
   city: string;
   weather: any;
@@ -30,13 +32,23 @@ export const CityCard: React.FC<CityCardProps> = ({ city, weather }) => {
   };
 
   return (
-    <div className="city__card" onClick={handleCardClick}>
-      <h3>{city}</h3>
+    <div className="CityCard" onClick={handleCardClick}>
+      <h3 className="CityCard__title">{city}</h3>
 
-      <p>{weather?.main?.temp}°C</p>
+      <p className="CityCard__text">{weather?.main?.temp}°C</p>
 
-      <button onClick={handleUpdate}>Update</button>
-      <button onClick={handleRemove}>Remove</button>
+      <button
+        onClick={handleUpdate}
+        className="CityCard__btn CityCard__btn-green"
+      >
+        Update
+      </button>
+      <button
+        onClick={handleRemove}
+        className="CityCard__btn CityCard__btn-red"
+      >
+        Remove
+      </button>
     </div>
   );
 };

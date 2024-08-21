@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./errorPage.scss";
+
 export const ErrorPage: React.FC = () => {
   return (
     <div className="ErrorPage">

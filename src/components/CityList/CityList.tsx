@@ -1,8 +1,12 @@
 // CityList.tsx
 import React from "react";
 import { useSelector } from "react-redux";
+
 import { RootState } from "../../redux/store";
+
 import { CityCard } from "../CityCard/CityCard";
+
+import "./cityList.scss";
 
 interface CityListProps {
   searchQuery: string;
@@ -19,7 +23,7 @@ export const CityList: React.FC<CityListProps> = ({ searchQuery }) => {
   );
 
   return (
-    <div className="city__list">
+    <div className="CityList">
       {filteredCities.map((city) => (
         <CityCard key={city} city={city} weather={weatherData[city]} />
       ))}

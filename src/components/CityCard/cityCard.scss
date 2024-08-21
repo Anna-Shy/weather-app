@@ -1,0 +1,50 @@
+@import "../../styles/variables.scss";
+
+.CityCard {
+  width: 200px;
+  padding: 20px;
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  text-align: center;
+
+  &__title {
+    margin-bottom: 28px;
+    font-size: $font24;
+    font-weight: $fontBold;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: $fontNormal;
+  }
+
+  &__btn {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: $font14;
+
+    &-green {
+      background-color: $green-btn-bg;
+      color: $white-color;
+    }
+
+    &-red {
+      background-color: $red-btn-bg;
+      color: $white-color;
+    }
+
+    &:hover {
+      background-color: $card-hover-bg;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      color: $black-color;
+    }
+  }
+}

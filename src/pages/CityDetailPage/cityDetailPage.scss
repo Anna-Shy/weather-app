@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+
+.CityDetailPage {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: linear-gradient(135deg, $pink-header-bg, $yellow-header-bg);
+    padding: 20px 35px;
+    border-radius: 8px;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      font-size: $font36;
+      font-weight: $fontBold;
+      margin: 0;
+      color: $white-color;
+
+      .icon {
+        margin-right: 10px;
+        font-size: $font28;
+        color: $white-color;
+      }
+    }
+  }
+
+  &__main {
+    min-height: 100vh;
+    padding: 20px;
+    background-color: $white-main-bg;
+
+    &-title {
+      text-align: center;
+      font-size: $font36;
+      font-weight: $fontBold;
+      margin-bottom: 16px;
+    }
+    
+    &-text {
+      font-size: $font20;
+      margin-bottom: 6px;
+    }
+  }
+}
